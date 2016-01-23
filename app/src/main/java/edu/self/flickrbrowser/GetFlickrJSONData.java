@@ -29,7 +29,7 @@ public class GetFlickrJSONData extends GetRawData {
         super.setmURL(mDestinationUri.toString());
         DownloadJsonData downloadJsonData = new DownloadJsonData();
         Log.v(LOG_TAG, "Build URI = " + mDestinationUri.toString());
-        //downloadJsonData.execute(mDestinationUri.toString());
+        downloadJsonData.execute(mDestinationUri.toString());
     }
 
     public boolean createAndUpdateUri(String searchCriteria, boolean matchAll) {

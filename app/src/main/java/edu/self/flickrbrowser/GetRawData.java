@@ -41,6 +41,8 @@ public class GetRawData {
         this.mData = null;
     }
 
+
+
     public class DownloadRawData extends AsyncTask<String, Void, String> {
         @Override
         protected void onPostExecute(String webData) {
