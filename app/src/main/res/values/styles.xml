@@ -13,7 +13,9 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@color/flickrBackgroundColor</item>
     </style>
+
     <style name="Theme.Flickr" parent="Theme.Base"></style>
+
     <style name="ActionBarThemeOverlay" parent="">
         <item name="android:textColorPrimary">@color/flickrPrimaryTextColor</item>
         <item name="colorControlHighlight">@color/flickrBackgroundColor</item>
@@ -27,9 +29,13 @@
         <item name="android:textSize">18sp</item>
 
     </style>
+
+    <style name="Theme.Flickr.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Flickr.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <!--<style name="AppTheme.NoActionBar">-->
-        <!--<item name="windowActionBar">false</item>-->
-        <!--<item name="windowNoTitle">true</item>-->
+    <!--<item name="windowActionBar">false</item>-->
+    <!--<item name="windowNoTitle">true</item>-->
     <!--</style>-->
 
     <!--<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />-->

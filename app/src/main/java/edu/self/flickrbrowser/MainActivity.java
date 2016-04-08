@@ -1,8 +1,12 @@
 package edu.self.flickrbrowser;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -20,11 +24,15 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         activateToolbar();
         ProcessPhotos processPhotos = new ProcessPhotos("google", true);
         processPhotos.execute();
+
+
+
     }
 
     @Override
@@ -46,7 +54,30 @@ public class MainActivity extends BaseActivity {
             return true;
         }
 
+        if (id == R.id.menu_search) {
+            Intent intent = new Intent(this, SearchActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (flickrRecyclerViewAdapter != null) {
+            String query = getSavedPreferenceData(FLICKR_QUERY);
+            if (query.length() > 0) {
+                ProcessPhotos processPhotos = new ProcessPhotos(query, true);
+                processPhotos.execute();
+            }
+        }
+    }
+
+    private String getSavedPreferenceData(String key) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        return sharedPref.getString(key, "");
     }
 
     public class ProcessPhotos extends GetFlickrJSONData {
