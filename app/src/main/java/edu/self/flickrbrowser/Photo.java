@@ -1,10 +1,12 @@
 package edu.self.flickrbrowser;
 
+import java.io.Serializable;
+
 /**
  * Created by mlinaberry on 1/19/16.
  */
-public class Photo {
-
+public class Photo implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String mTitle;
     private String mAuthor;
     private String mAuthorId;
@@ -33,27 +35,31 @@ public class Photo {
                 '}';
     }
 
-    public String getmTitle() {
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getTitle() {
         return mTitle;
     }
 
-    public String getmAuthor() {
+    public String getAuthor() {
         return mAuthor;
     }
 
-    public String getmAuthorId() {
+    public String getAuthorId() {
         return mAuthorId;
     }
 
-    public String getmLink() {
+    public String getLink() {
         return mLink;
     }
 
-    public String getmTags() {
+    public String getTags() {
         return mTags;
     }
 
-    public String getmImage() {
+    public String getImage() {
         return mImage;
     }
 }
